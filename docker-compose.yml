@@ -1,16 +1,16 @@
-version: "3.8"
+version: "3.9"
 
 services:
-  postgres:
-    image: postgres:13
-    container_name: fastapi_postgres
+  db:
+    image: postgres
+    container_name: ptm_db
     restart: always
     environment:
       POSTGRES_USER: moesalari
       POSTGRES_PASSWORD: 123456
       POSTGRES_DB: task1
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - ./data/postgres:/var/lib/postgresql/data
 

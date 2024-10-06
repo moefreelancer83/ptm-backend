@@ -2,7 +2,7 @@ from sqlmodel import create_engine, SQLModel, Session
 
 
 #TODO: Maybe I need to move it somewhere else with all other configs
-DATABASE_URL = "postgresql://moesalari:123456@localhost:5432/task1"
+DATABASE_URL = "postgresql://moesalari:123456@localhost:5433/task1"
 
 
 engine = create_engine(DATABASE_URL, echo=True)

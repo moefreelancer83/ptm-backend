@@ -6,5 +6,12 @@ class Task(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     title: str
     description: str
-    completed: bool
+    completed: bool = Field(default=False)
     deadline: Optional[date] = None
+
+class TaskCreate(SQLModel):
+    title: str
+    description: str
+
+class TaskResponse(Task):
+    pass

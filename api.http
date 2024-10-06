@@ -1,0 +1,11 @@
+POST http://localhost:8000/tasks/
+Content-Type:  application/json
+
+{
+    "title" : "task1",
+    "description": "a sample descp"
+}
+###
+DELETE  http://localhost:8000/tasks/3
+Content-Type:  application/json
+
