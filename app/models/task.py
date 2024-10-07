@@ -2,16 +2,18 @@ from sqlmodel import SQLModel, Field
 from typing import Optional
 from datetime import date
 
-class Task(SQLModel, table=True):
-    id: Optional[int] = Field(default=None, primary_key=True)
-    title: str
-    description: str
-    completed: bool = Field(default=False)
-    deadline: Optional[date] = None
 
-class TaskCreate(SQLModel):
+class TaskBase(SQLModel):
     title: str
     description: str
+    deadline: Optional[date] = None
+    completed: bool = Field(default=False)
+
+class Task(TaskBase, table=True):
+    id: Optional[int] = Field(default=None, primary_key=True)
+    
+class TaskCreate(TaskBase):
+    pass
 
 class TaskResponse(Task):
-    pass
+    id: int

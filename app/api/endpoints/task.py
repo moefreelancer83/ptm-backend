@@ -1,6 +1,6 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session
-from app.models.task import TaskResponse, TaskCreate
+from app.models.task import Task, TaskResponse, TaskCreate
 from app.db.database import get_session
 from app.services.task_service import TaskService
 from typing import List, Optional
@@ -36,8 +36,8 @@ async def get_task(task_id: str, session: Session= Depends(get_session)):
         raise HTTPException(status_code=404, detail="Task not found")
     return task
     
-@router.post("/{task_id}", response_model=TaskResponse)
-async def update_task(task_id: str, task_data: TaskCreate, session: Session = Depends(get_session)):
+@router.put("/{task_id}", response_model=TaskResponse)
+async def update_task(task_id: str, task_data: Task, session: Session = Depends(get_session)):
     task_service = TaskService(session=session)
     updated_task = task_service.update_task(task_id=task_id, task=task_data)
     if updated_task is None:

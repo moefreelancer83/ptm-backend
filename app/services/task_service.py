@@ -33,7 +33,7 @@ class TaskService:
             return TaskResponse.model_validate(db_task)
         return None
     
-    def update_task(self, task_id: str, task: TaskCreate) -> Optional[TaskResponse]:
+    def update_task(self, task_id: str, task: Task) -> Optional[TaskResponse]:
         db_task_to_update = self.session.get(Task, task_id)
         if db_task_to_update:
             task_data = task.model_dump(exclude_unset=True)
